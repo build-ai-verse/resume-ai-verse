@@ -35,4 +35,8 @@ const ResumePreviewer = ({ resumeData, className }: ResumePreviewProps) => {
   );
 };
 
+type ResumeSectionProps = {
+  resumeData: ResumeValues;
+};
+
 export default ResumePreviewer;

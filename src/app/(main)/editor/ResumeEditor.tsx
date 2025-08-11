@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { steps } from "./steps";
 import Breadcrumbs from "./Breadcrumbs";
@@ -11,7 +11,7 @@ import ResumePreviewerSection from "./ResumePreviewerSection";
 const ResumeEditor = () => {
   const searchParams = useSearchParams();
 
-  const [resumeData, setResumeData] = useState<ResumeValues>({});
+  const [resumeData, setResumeData] = useState<Partial<ResumeValues>>({});
 
   const currentStep = searchParams.get("step") || steps[0].key;
 
@@ -42,14 +42,14 @@ const ResumeEditor = () => {
             <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
             {FormComponent && (
               <FormComponent
-                resumeData={resumeData}
+                resumeData={resumeData as ResumeValues}
                 setResumeData={setResumeData}
               />
             )}
           </div>
           <div className="grow md:border-r" />
           <ResumePreviewerSection
-            resumeData={resumeData}
+            resumeData={resumeData as ResumeValues}
             setResumeData={setResumeData}
           />
         </div>
