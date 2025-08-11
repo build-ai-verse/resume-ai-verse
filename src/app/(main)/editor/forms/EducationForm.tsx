@@ -83,7 +83,7 @@ type EducationItemProps = {
   remove: (index: number) => void;
 };
 
-const EducationItem = ({ form, index, number, remove }: EducationItemProps) => {
+const EducationItem = ({ form, index, remove }: EducationItemProps) => {
   return (
     <div className="my-3 border rounded-md bg-background p-3">
       <div className="flex justify-between gap-2 mb-2">
