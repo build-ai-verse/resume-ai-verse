@@ -87,12 +87,7 @@ type WorkExprienceItemProps = {
   remove: (index: number) => void;
 };
 
-const WorkExprienceItem = ({
-  form,
-  index,
-  number,
-  remove,
-}: WorkExprienceItemProps) => {
+const WorkExprienceItem = ({ form, index, remove }: WorkExprienceItemProps) => {
   return (
     <div className="my-3 border rounded-md bg-background p-3">
       <div className="flex justify-between gap-2 mb-2">
