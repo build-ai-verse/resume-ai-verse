@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { steps } from "./steps";
 import Breadcrumbs from "./Breadcrumbs";
@@ -36,24 +36,26 @@ const ResumeEditor = () => {
           saved automatically.
         </p>
       </header>
-      <main className="relative grow">
-        <div className="absolute bottom-0 top-0 flex w-full">
-          <div className="w-full md:w-1/2 overflow-y-auto p-3 space-y-6">
-            <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
-            {FormComponent && (
-              <FormComponent
-                resumeData={resumeData as ResumeValues}
-                setResumeData={setResumeData}
-              />
-            )}
+      <Suspense>
+        <main className="relative grow">
+          <div className="absolute bottom-0 top-0 flex w-full">
+            <div className="w-full md:w-1/2 overflow-y-auto p-3 space-y-6">
+              <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
+              {FormComponent && (
+                <FormComponent
+                  resumeData={resumeData as ResumeValues}
+                  setResumeData={setResumeData}
+                />
+              )}
+            </div>
+            <div className="grow md:border-r" />
+            <ResumePreviewerSection
+              resumeData={resumeData as ResumeValues}
+              setResumeData={setResumeData}
+            />
           </div>
-          <div className="grow md:border-r" />
-          <ResumePreviewerSection
-            resumeData={resumeData as ResumeValues}
-            setResumeData={setResumeData}
-          />
-        </div>
-      </main>
+        </main>
+      </Suspense>
       <Footer currentStep={currentStep} setCurrentStep={setStep} />
     </div>
   );
