@@ -126,7 +126,11 @@ const EducationItem = ({ form, index, remove }: EducationItemProps) => {
             <FormItem>
               <FormLabel>Start Date</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input
+                  type="date"
+                  {...field}
+                  value={field.value?.slice(0, 10)}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -140,7 +144,11 @@ const EducationItem = ({ form, index, remove }: EducationItemProps) => {
             <FormItem>
               <FormLabel>End Date</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input
+                  type="date"
+                  {...field}
+                  value={field.value?.slice(0, 10)}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
